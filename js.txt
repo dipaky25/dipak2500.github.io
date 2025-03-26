@@ -1,0 +1,30 @@
+const correctAnswers = {
+    q1: "a", q2: "b", q3: "b", q4: "b", q5: "a", q6: "b", q7: "c", q8: "a",
+    q9: "c", q10: "b", q11: "a", q12: "d", q13: "b", q14: "b", q15: "a", q16: "a",
+    q17: "d", q18: "a", q19: "c", q20: "b", q21: "a", q22: "d", q23: "b", q24: "c",
+    q25: "a", q26: "b", q27: "b", q28: "a", q29: "c", q30: "b", q31: "b", q32: "c",
+    q33: "b", q34: "b", q35: "a", q36: "b", q37: "a", q38: "a", q39: "c", q40: "b"
+};
+
+function submitQuiz() {
+    let score = 0;
+    let answerKey = "";
+    const form = document.getElementById("quizForm");
+    const result = document.getElementById("result");
+    const scoreDisplay = document.getElementById("score");
+    const answerKeyDisplay = document.getElementById("answerKey");
+
+    for (let i = 1; i <= 40; i++) {
+        const userAnswer = form.elements["q" + i] ? form.elements["q" + i].value : null;
+        const correctAnswer = correctAnswers["q" + i];
+        if (userAnswer === correctAnswer) {
+            score++;
+        }
+        answerKey += `प्रश्न ${i}: सही उत्तर - ${correctAnswer}<br>`;
+    }
+
+    scoreDisplay.textContent = score;
+    answerKeyDisplay.innerHTML = answerKey;
+    result.style.display = "block";
+    window.scrollTo(0, document.body.scrollHeight); // नीचे स्क्रॉल करता है
+}
